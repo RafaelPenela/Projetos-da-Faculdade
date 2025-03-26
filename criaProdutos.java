@@ -1,4 +1,4 @@
-//código que necessita de testes
+//código que considera a pre implementação do objeto Utils e seus métodos. Por se tratar de um código para estudo de estruturas, ele é pouco polido.
 
 public interface Ligavel{
     void ligavel();
@@ -14,8 +14,8 @@ public class Produto {
     public String getId(){
         return id;
     }
-    public String getNome(){
-        return nome;
+    public String getCor(){
+        return cor;
     }
     public double getPreco(){
         return preco;
@@ -23,13 +23,13 @@ public class Produto {
     public void setId(String id){
         this.id=id;
     }
-    public void SetNome(String nome){
-        this.nome=nome;
+    public void SetCor(String cor){
+        this.cor=cor;
     }
     public void setPreco(double preco){
         this.preco =preco;
     }
-    public toString(){
+    public String toString(){
         return id + cor + preco;
     }
 }
@@ -59,7 +59,7 @@ public class ProgramaPrincipal{
         }
         return produtos;
     }
-    public void media(List fim){
+    public static double media(List fim){
         double somatorio= 0;
         for (int i=0;i<fim.size();i++){
             somatorio += fim.get(i).getPreco();
@@ -68,7 +68,7 @@ public class ProgramaPrincipal{
     }
     public static void main(String[] args){
         List a = Utils.getLista();
-        List filtrada=Utils.filtrarLigaveis(a);
+        List filtrada=ProgramaPrincipal.filtrarLigaveis(a);
         System.out.println(media(filtrada));
     }
 }
