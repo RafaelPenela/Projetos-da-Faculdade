@@ -1,16 +1,14 @@
-//codigo que necessita de verificação 
-
 public class Funcionarios {
     private String nome;
     private double salario;
-    public Funcionario(String nome, double salario){
+    public Funcionarios(String nome, double salario){
         this.nome = nome;
         this.salario = salario;
     }
     public String getNome(){
         return nome;
     }
-    public double getSalário(){
+    public double getSalario(){
         return salario;
     }
     public void setNome(String nome){
@@ -33,14 +31,21 @@ public class Utils{
     }
     public static double calcularMediaSalarios(Funcionario[] funcionarios){
         double soma = 0;
-        for (int i=0;i<funcionarios.lenght;i++){
-            soma +=  funcionarios[i].getSalário();
+        for (int i=0;i<funcionarios.length;i++){
+            soma +=  funcionarios[i].getSalario();
         }
         return soma/funcionarios.length;
     }
+    public static List getFuncionarios() {
+        List<String> funcionarios = new ArrayList<>();
+        funcionarios.add("João#2500.00");
+        funcionarios.add("Maria#3000.00");
+        funcionarios.add("Pedro#2800.00");
+        return funcionarios;
+    }
 }
 
-public class ProgramaPrincipal extends Utils {
+public class ProgramaPrincipal {
     public static void main(String[] args){
         List<Funcionarios> receptor = Utils.getFuncionarios();
         Funcionarios[] receptorSegundo = Utils.parseFuncionarios(receptor);
