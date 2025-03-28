@@ -1,4 +1,4 @@
-//codigo em processo de teste e aprimoramento
+//código para estudo que usa exceptions de forma simplista
 
 
 public class CriaturaMarinha{
@@ -28,32 +28,35 @@ public class CriaturaMarinha{
     public void setProfundidadeEncontrada(int profundidadeEncontrada){
         this.profundidadeEncontrada=profundidadeEncontrada;
     }
-    public Strign toString(){
-        return tag + id + profundidadeEncontrada;
+    public String toString(){
+        return tag + nomeEspecie + profundidadeEncontrada;
     }
 
 }
 
 public class Utils{
-    public Map retornaDados(Set conjuntoCriaturas) throws FormatoIncorretoException{
-        Map mapa = new hashMap();
-        for(int i=0;i<conjuntoCriaturas.size();i++){
-            String[] entradas = conjuntoCriaturas.get(i).split("#");
+    public Map<CriaturaMarinha, Integer> retornaDados(Set<String> conjuntoCriaturas){
+        Map<CriaturaMarinha, Integer> mapa = new HashMap<>();
+        for(String entrada : conjuntoCriaturas){
+            String[] entradas = entrada.split("#");
             try{
+                if (entradas.length < 4) {
+                    throw new FormatoIncorretoException("Formato incorreto: [" + entrada + "]");
+                }
                 CriaturaMarinha criatura = new CriaturaMarinha(entradas[1], entradas[2], Integer.parseInt(entradas[3]));
-                mapa.put(criatura, Integer.parseInt(entrada[3]));
+                mapa.put(criatura, Integer.parseInt(entradas[3]));
             }
-            catch{
-                throw new FormatoIncorretoException("FormatoIncorretoException: O
-formato da String ["+ conjuntoCriaturas.get(i) +"] está incorreto.");
+            catch(Exception e){
+                throw new FormatoIncorretoException("FormatoIncorretoException: O formato da String [" + entrada + "] está incorreto.");
             }
         }
+        return mapa;
     }
 }
 
 public class FormatoIncorretoException extends Exception{
-    public FormatoIncorretoException(){
-        super();
+    public FormatoIncorretoException(String mensagem){
+        super(mensagem);
     }
 
 } 
