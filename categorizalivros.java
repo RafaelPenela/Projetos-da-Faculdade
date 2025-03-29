@@ -1,4 +1,4 @@
-//código com erros, que será concertado
+//código para estudo do funcionamento das funções e por isso pouco polido.
 
 import java.util.Iterator;
 
@@ -120,7 +120,7 @@ public class Principal {
         System.out.println("Qual o ISBN do livro a ser consultado?");
         String entrada = console.nextLine();
         console.close();
-        Livro aux = new LivroDeLivraria();
+        Livro aux = new LivroDeLivraria("1Q");
         aux.setISBN(entrada);
         if(listaDeLivros.contains(aux)){
             int i = listaDeLivros.indexOf(aux);
